@@ -45,14 +45,30 @@ FPS = 60
 
 window.fill(100, 200, 150)
 
+#создания мяча и ракетки
+racket1 = Player('racket.png', 30, 200, 50, 150, 40)
+racket2 = Player('racket.png', 420, 200, 50, 150, 40)
+ball = GameSprite('tenis_ball.png', 200, 200, 50, 50, 4)
+
+
 game = True
+finish = False
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+
+    if finish == False:
+        racket1.update_l()
+        racket2.update_r()
+       
+        window.fill((100,100,100))
+        racket1.reset()
+        racket2.reset()
+        ball.reset()
+
         
     window.draw()
 
     display.update()
     timer.tick(FPS)
-
